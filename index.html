@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo Digital</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo-pagina">Catálogo</h1>
+    <p class="subtitulo-pagina info">Selecciona una categoría para explorar nuestros productos</p>
+    <div id="mensajes" class="info"></div>
+
+    <section id="categorias" class="grid"></section>
+
+    <section id="productos" style="display:none; margin-top:16px;">
+      <button id="volver"> 🔙 Volver</button>
+      <h2 id="titulo-categoria"></h2>
+      <div id="lista-productos" class="grid" style="margin-top:8px"></div>
+    </section>
+  </div>
+
+  <!-- Botón de WhatsApp -->
+  <a 
+    href="https://wa.me/53910527?text=Hola🖐️,%20estoy%20interesado%20en%20los%20productos%20del%20catálogo🛒" 
+    class="whatsapp-button" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img 
+      src="https://cdn-icons-png.flaticon.com/512/220/220236.png" 
+      alt="WhatsApp" 
+      class="whatsapp-icon"
+    />
+  </a>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
