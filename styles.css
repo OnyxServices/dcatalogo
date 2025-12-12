@@ -1,0 +1,698 @@
+/* Estilos generales - Tema Oscuro Profesional */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background: 
+    linear-gradient(rgba(3, 7, 18, 0.85), rgba(3, 7, 18, 0.95)),
+    url('https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-orange-and-black-wave-business-background-vector-image-image_15685801.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #f1f5f9;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezado */
+.titulo-pagina {
+  color: #ffffff;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0 0 15px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #f97316;
+  text-align: center;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitulo-pagina {
+  color: #cbd5e1;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 0.8px;
+  font-weight: 300;
+}
+
+/* Mensajes */
+#mensajes {
+  background-color: rgba(15, 23, 42, 0.9);
+  border-left: 4px solid #f97316;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+#mensajes.error {
+  background-color: rgba(127, 29, 29, 0.9);
+  border-left-color: #ef4444;
+  color: #fecaca;
+}
+
+/* Grid de categorías y productos */
+.grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+  perspective: 1000px;
+}
+
+/* MODIFICACIÓN: Ajuste responsive para tarjetas lado a lado */
+.grid > .card {
+  flex: 1 0 calc(25% - 25px); /* 4 tarjetas por fila en desktop */
+  max-width: calc(25% - 25px);
+}
+
+/* Tarjetas con efecto 3D */
+.card {
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 16px;
+  padding: 25px;
+  min-width: 0; /* Importante para el responsive */
+  text-align: center;
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(249, 115, 22, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+  z-index: 1;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent 70%);
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover {
+  transform: 
+    perspective(1000px) 
+    rotateX(5deg) 
+    rotateY(0deg) 
+    translateY(-12px) 
+    translateZ(20px);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(249, 115, 22, 0.3),
+    0 0 0 1px rgba(249, 115, 22, 0.2);
+  border-color: rgba(249, 115, 22, 0.5);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card strong {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-top: 15px;
+  display: block;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card div {
+  color: #fbbf24;
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Imágenes con efecto 3D */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  max-height: 150px;
+  object-fit: cover;
+  border: 2px solid rgba(249, 115, 22, 0.3);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(3, 7, 18, 0.5);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover img {
+  transform: translateZ(10px);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(249, 115, 22, 0.4),
+    inset 0 0 30px rgba(3, 7, 18, 0.7);
+  border-color: rgba(249, 115, 22, 0.6);
+}
+
+/* Sección de productos */
+#productos {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(249, 115, 22, 0.2);
+  margin-top: 30px;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  backdrop-filter: blur(15px);
+  transform-style: preserve-3d;
+}
+
+/* Botón volver con efecto 3D */
+#volver {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 25px;
+  box-shadow: 
+    0 6px 12px rgba(249, 115, 22, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#volver::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.7s;
+}
+
+#volver:hover {
+  transform: 
+    perspective(500px) 
+    rotateX(5deg) 
+    translateY(-4px) 
+    translateZ(10px);
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  box-shadow: 
+    0 12px 24px rgba(249, 115, 22, 0.6),
+    0 0 20px rgba(249, 115, 22, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+#volver:hover::before {
+  left: 100%;
+}
+
+/* Título de categoría */
+#titulo-categoria {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid rgba(249, 115, 22, 0.4);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(90deg, #fbbf24, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Indicador de sin imagen */
+.card div[style*="height:90px"] {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 2px dashed rgba(249, 115, 22, 0.3);
+  box-shadow: inset 0 0 15px rgba(3, 7, 18, 0.5);
+  transform-style: preserve-3d;
+}
+
+/* Mensaje de no hay categorías/productos */
+#categorias > p, #lista-productos > p {
+  color: #cbd5e1;
+  font-style: italic;
+  padding: 40px;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+  border-radius: 16px;
+  border: 2px dashed rgba(249, 115, 22, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+}
+
+/* Animación para las tarjetas */
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-10deg) translateY(30px) translateZ(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0) translateZ(0);
+  }
+}
+
+.card {
+  animation: cardAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+}
+
+/* Estilos para el scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
+  border-radius: 8px;
+  border: 2px solid rgba(15, 23, 42, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%);
+}
+
+/* Efecto de zoom para imágenes */
+.imagen-zoom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(3, 7, 18, 0.95), rgba(3, 7, 18, 0.98)),
+    url('https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-orange-and-black-wave-business-background-vector-image-image_15685801.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  cursor: zoom-out;
+  animation: fadeInZoom 0.4s ease-out;
+  backdrop-filter: blur(20px);
+}
+
+.imagen-zoom img {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 20px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(249, 115, 22, 0.5),
+    0 0 0 3px #f97316;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  object-fit: contain;
+  transform-style: preserve-3d;
+  transform: perspective(2000px) rotateY(0deg) translateZ(50px);
+}
+
+/* Animaciones para el zoom */
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(20px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: perspective(2000px) rotateY(-10deg) scale(0.7) translateZ(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(2000px) rotateY(0deg) scale(1) translateZ(50px);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: perspective(2000px) rotateY(0deg) scale(1) translateZ(50px);
+    opacity: 1;
+  }
+  to {
+    transform: perspective(2000px) rotateY(10deg) scale(0.7) translateZ(-100px);
+    opacity: 0;
+  }
+}
+
+/* Clase para quitar el zoom */
+.imagen-zoom.saliendo {
+  animation: fadeOutZoom 0.4s ease-out forwards;
+}
+
+.imagen-zoom.saliendo img {
+  animation: scaleOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeOutZoom {
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+}
+
+/* Asegurar que las imágenes de las tarjetas sean clickeables */
+.card img {
+  cursor: zoom-in;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover img {
+  transform: translateZ(20px) scale(1.05);
+}
+
+/* Indicador de que se puede hacer zoom */
+.card img::after {
+  content: "🔍";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateZ(5px);
+}
+
+.card img:hover::after {
+  opacity: 1;
+}
+
+/* BOTÓN DE WHATSAPP */
+.whatsapp-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 8px 25px rgba(37, 211, 102, 0.4),
+    0 0 15px rgba(37, 211, 102, 0.3),
+    0 0 0 2px rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: pulse-whatsapp 2s infinite;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateZ(0);
+}
+
+.whatsapp-button:hover {
+  transform: 
+    perspective(1000px) 
+    rotateX(5deg) 
+    rotateY(-5deg) 
+    translateY(-8px) 
+    translateZ(20px);
+  box-shadow: 
+    0 15px 35px rgba(37, 211, 102, 0.6),
+    0 0 25px rgba(37, 211, 102, 0.5),
+    0 0 0 3px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #1ebea5, #0d8e7a);
+  width: 70px;
+  height: 70px;
+}
+
+.whatsapp-icon {
+  width: 35px;
+  height: 35px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.whatsapp-button:hover .whatsapp-icon {
+  transform: translateZ(15px) scale(1.1);
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 
+      0 8px 25px rgba(37, 211, 102, 0.4),
+      0 0 15px rgba(37, 211, 102, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 8px 30px rgba(37, 211, 102, 0.6),
+      0 0 20px rgba(37, 211, 102, 0.4),
+      0 0 0 3px rgba(255, 255, 255, 0.15);
+  }
+  100% {
+    box-shadow: 
+      0 8px 25px rgba(37, 211, 102, 0.4),
+      0 0 15px rgba(37, 211, 102, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* MODIFICACIONES RESPONSIVE */
+@media (max-width: 1024px) {
+  .grid > .card {
+    flex: 1 0 calc(33.333% - 25px); /* 3 tarjetas por fila en tablet grande */
+    max-width: calc(33.333% - 25px);
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-pagina {
+    font-size: 2.2rem;
+  }
+  
+  .grid {
+    gap: 20px;
+    perspective: 800px;
+  }
+  
+  .grid > .card {
+    flex: 1 0 calc(50% - 20px); /* 2 tarjetas por fila en tablet */
+    max-width: calc(50% - 20px);
+  }
+  
+  .card {
+    padding: 20px;
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+  
+  .card:hover {
+    transform: 
+      perspective(800px) 
+      rotateX(3deg) 
+      rotateY(0deg) 
+      translateY(-8px) 
+      translateZ(15px);
+  }
+  
+  #productos {
+    padding: 25px;
+  }
+  
+  .imagen-zoom img {
+    max-width: 90%;
+    max-height: 75%;
+  }
+  
+  /* WhatsApp responsive */
+  .whatsapp-button {
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .whatsapp-button:hover {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .whatsapp-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+  
+  .titulo-pagina {
+    font-size: 1.8rem;
+  }
+  
+  .grid {
+    gap: 15px;
+  }
+  
+  .grid > .card {
+    flex: 1 0 calc(50% - 15px); /* 2 tarjetas lado a lado en móvil */
+    max-width: calc(50% - 15px);
+    min-width: 140px; /* Ancho mínimo */
+  }
+  
+  .card {
+    padding: 18px;
+  }
+  
+  .card strong {
+    font-size: 1.1rem;
+  }
+  
+  .card div {
+    font-size: 1rem;
+  }
+  
+  #volver {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .imagen-zoom img {
+    max-width: 95%;
+    max-height: 65%;
+  }
+  
+  /* WhatsApp en móvil */
+  .whatsapp-button {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+  }
+  
+  .whatsapp-button:hover {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Para pantallas muy pequeñas (menos de 360px) */
+@media (max-width: 360px) {
+  .grid > .card {
+    flex: 1 0 100%; /* 1 tarjeta por fila en móviles muy pequeños */
+    max-width: 100%;
+  }
+}
+
+/* Efecto de partículas de fondo (simulado con gradientes) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(3, 7, 18, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Efecto de brillo naranja en elementos interactivos */
+.card:hover .card-img-container::after,
+#volver:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(249, 115, 22, 0.1), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
