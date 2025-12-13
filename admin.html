@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrativo</title>
+  <style>
+    /* Tema oscuro */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      margin: 0;
+    }
+    
+    h1, h2, h3 {
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+    
+    h1 {
+      border-bottom: 2px solid #4a4a4a;
+      padding-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    
+    h2 {
+      font-size: 1.3rem;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+    }
+    
+    section {
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #2d2d2d;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    input, select {
+      padding: 10px 12px;
+      margin: 8px 0;
+      border: 1px solid #555;
+      border-radius: 6px;
+      background-color: #3a3a3a;
+      color: #e0e0e0;
+      font-size: 16px; /* Tamaño aumentado para móvil */
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #6c63ff;
+      box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+    }
+    
+    button {
+      padding: 12px 16px;
+      margin: 8px 0;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.2s;
+      font-size: 16px;
+      width: 100%;
+    }
+    
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button:first-of-type {
+      background-color: #6c63ff;
+      color: white;
+    }
+    
+    button:first-of-type:hover {
+      background-color: #5a52d5;
+    }
+    
+    button:nth-of-type(2) {
+      background-color: #ff9800;
+      color: white;
+    }
+    
+    button:nth-of-type(2):hover {
+      background-color: #e68900;
+    }
+    
+    button:nth-of-type(3) {
+      background-color: #f44336;
+      color: white;
+    }
+    
+    button:nth-of-type(3):hover {
+      background-color: #d32f2f;
+    }
+    
+    .item {
+      border: 1px solid #444;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+      background-color: #3a3a3a;
+    }
+    
+    .off {
+      opacity: 0.6;
+      background-color: #333;
+    }
+    
+    .row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 10px;
+    }
+    
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #444;
+      margin: 30px 0;
+    }
+    
+    img {
+      border-radius: 4px;
+      margin-top: 8px;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    small {
+      color: #aaa;
+      font-size: 12px;
+    }
+    
+    strong {
+      color: #ffffff;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #2d2d2d;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #666;
+    }
+    
+    /* Estilos específicos para formularios en móvil */
+    .form-group {
+      margin-bottom: 15px;
+      width: 100%;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+    
+    /* Media Queries para pantallas más grandes */
+    @media (min-width: 768px) {
+      body {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+      
+      section {
+        padding: 20px;
+      }
+      
+      .row {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      
+      .row strong {
+        min-width: 200px;
+        margin-bottom: 0;
+      }
+      
+      input, select {
+        width: auto;
+        margin: 4px;
+      }
+      
+      button {
+        width: auto;
+        padding: 8px 16px;
+        margin: 4px;
+      }
+      
+      .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      
+      .form-row input,
+      .form-row select,
+      .form-row button {
+        flex: 1;
+        min-width: 150px;
+      }
+      
+      .form-row button {
+        flex: none;
+      }
+    }
+    
+    /* Ajustes adicionales para pantallas muy pequeñas */
+    @media (max-width: 360px) {
+      body {
+        padding: 10px;
+      }
+      
+      section {
+        padding: 12px;
+      }
+      
+      input, select, button {
+        font-size: 14px;
+      }
+    }
+    
+    /* Clases utilitarias para responsividad */
+    .mobile-only {
+      display: block;
+    }
+    
+    .desktop-only {
+      display: none;
+    }
+    
+    @media (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+      
+      .desktop-only {
+        display: block;
+      }
+    }
+    
+    /* Estilos para el contenedor de botones en móvil */
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .button-group button {
+      flex: 1;
+      min-width: 120px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Panel Administrativo</h1>
+
+<!-- ================= CATEGORÍAS ================= -->
+<section>
+  <h2>Categorías</h2>
+
+  <h3>Nueva categoría</h3>
+  <div class="form-row">
+    <input id="cat-nombre" placeholder="Nombre">
+    <input id="cat-imagen" placeholder="URL imagen">
+    <button onclick="crearCategoria()">Crear</button>
+  </div>
+
+  <h3>Listado</h3>
+  <div id="lista-categorias"></div>
+</section>
+
+<hr>
+
+<!-- ================= PRODUCTOS ================= -->
+<section>
+  <h2>Productos</h2>
+
+  <h3>Nuevo producto</h3>
+  <div class="form-row">
+    <select id="prod-cat"></select>
+    <input id="prod-nombre" placeholder="Nombre">
+    <input id="prod-precio" type="number" step="0.01" placeholder="Precio">
+    <input id="prod-imagen" placeholder="URL imagen">
+    <button onclick="crearProducto()">Crear</button>
+  </div>
+
+  <h3>Listado</h3>
+  <div id="lista-productos"></div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://dsvracququvtxofpnuar.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRzdnJhY3F1cXV2dHhvZnBudWFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NTU5NDMsImV4cCI6MjA4MTEzMTk0M30.cMnyd_6oIgZt7zdxjAteZs7ay5nWrHpE-v6V-CVm2aY"; // ⚠️ SOLO EN ADMIN
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  /* ================= CATEGORÍAS ================= */
+
+  async function cargarCategorias() {
+    const { data, error } = await supabaseClient
+      .from("categorias")
+      .select("*")
+      .order("id");
+
+    if (error) return console.error(error);
+
+    const lista = document.getElementById("lista-categorias");
+    const select = document.getElementById("prod-cat");
+
+    lista.innerHTML = "";
+    select.innerHTML = "";
+
+    data.forEach(c => {
+      // select productos
+      const opt = document.createElement("option");
+      opt.value = c.id;
+      opt.textContent = c.nombre;
+      select.appendChild(opt);
+
+      // render admin
+      const div = document.createElement("div");
+      div.className = "item " + (c.activa ? "" : "off");
+
+      div.innerHTML = `
+        <div class="row">
+          <strong>${c.nombre}</strong>
+          <div class="button-group">
+            <button onclick="toggleCategoria(${c.id}, ${c.activa})">
+              ${c.activa ? "Desactivar" : "Activar"}
+            </button>
+            <button onclick="borrarCategoria(${c.id})">Eliminar</button>
+          </div>
+        </div>
+        <img src="${c.imagen}" width="80">
+      `;
+      lista.appendChild(div);
+    });
+  }
+
+  async function crearCategoria() {
+    await supabaseClient.from("categorias").insert({
+      nombre: document.getElementById("cat-nombre").value,
+      imagen: document.getElementById("cat-imagen").value
+    });
+    cargarCategorias();
+  }
+
+  async function toggleCategoria(id, estado) {
+    await supabaseClient.from("categorias")
+      .update({ activa: !estado })
+      .eq("id", id);
+    cargarCategorias();
+  }
+
+  async function borrarCategoria(id) {
+    await supabaseClient.from("categorias").delete().eq("id", id);
+    cargarCategorias();
+  }
+
+  /* ================= PRODUCTOS ================= */
+
+  async function cargarProductos() {
+    const { data, error } = await supabaseClient
+      .from("productos")
+      .select("*")
+      .order("id");
+
+    if (error) return console.error(error);
+
+    const lista = document.getElementById("lista-productos");
+    lista.innerHTML = "";
+
+    data.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "item " + (p.activo ? "" : "off");
+
+      div.innerHTML = `
+        <div class="row">
+          <strong>${p.nombre}</strong>
+          
+          <div style="width:100%; margin: 8px 0;">
+            <label for="precio-${p.id}" style="display:block; margin-bottom:5px; color:#ccc;">Precio:</label>
+            <input id="precio-${p.id}" type="number" step="0.01" value="${p.precio}"
+              onchange="actualizarPrecio(${p.id}, this.value)" style="width:100%;">
+          </div>
+          
+          <div class="button-group">
+            <button onclick="toggleProducto(${p.id}, ${p.activo})">
+              ${p.activo ? "Desactivar" : "Activar"}
+            </button>
+            <button onclick="borrarProducto(${p.id})">Eliminar</button>
+          </div>
+        </div>
+
+        <small>Categoría ID: ${p.categoria_id}</small><br>
+        <img src="${p.imagen}" width="80">
+      `;
+      lista.appendChild(div);
+    });
+  }
+
+  async function crearProducto() {
+    await supabaseClient.from("productos").insert({
+      categoria_id: document.getElementById("prod-cat").value,
+      nombre: document.getElementById("prod-nombre").value,
+      precio: document.getElementById("prod-precio").value,
+      imagen: document.getElementById("prod-imagen").value
+    });
+    cargarProductos();
+  }
+
+  async function actualizarPrecio(id, nuevoPrecio) {
+    await supabaseClient.from("productos")
+      .update({ precio: nuevoPrecio })
+      .eq("id", id);
+  }
+
+  async function toggleProducto(id, estado) {
+    await supabaseClient.from("productos")
+      .update({ activo: !estado })
+      .eq("id", id);
+    cargarProductos();
+  }
+
+  async function borrarProducto(id) {
+    await supabaseClient.from("productos").delete().eq("id", id);
+    cargarProductos();
+  }
+
+  // INIT
+  cargarCategorias();
+  cargarProductos();
+</script>
+</body>
+</html>
